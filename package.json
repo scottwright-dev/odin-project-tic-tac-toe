@@ -1,0 +1,20 @@
+{
+  "name": "odin-project-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Tic tic toe game project from The Odin project curriculum",
+  "main": "script.js",
+  "scripts": {
+    "lint": "eslint . --fix --max-warnings=0",
+    "format": "prettier . --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "2.8.8"
+  }
+}
