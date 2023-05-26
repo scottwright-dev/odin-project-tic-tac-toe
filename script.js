@@ -5,15 +5,18 @@ const gameBoard = (() => {
       ['', '', ''],
       ['', '', '']
     ];
+
+    const getCurrentBoard = () => currentBoard;
   
-    const isMoveValid = (row, col) => {
+    const checkPlayerMove = (row, col, marker) => {
       if (currentBoard[row][col] === '') {
+        currentBoard[row][col] = marker;
         return true;
       }
       return false;
     };
   
-    return { currentBoard, isMoveValid };
+    return { getCurrentBoard, checkPlayerMove };
   })();
   
   // PLAYER
@@ -30,25 +33,30 @@ const gameBoard = (() => {
   const player1 = createPlayer('Player 1', 'O');
   const player2 = createPlayer('Player 2', 'X');
   
-  // GAME CONTROLLER
-  const gameController = (() => {
-    const playRound = () => {
-      const players = [player1, player2];
-      let currentPlayer = players[0];
+// GAME CONTROLLER
+const gameController = (() => {
+    let currentPlayer = player1;
   
+    const switchPlayer = () => {
+      currentPlayer = currentPlayer === player1 ? player2 : player1;
+    };
+  
+    const playRound = () => {
       const playerMove = currentPlayer.getPlayerMove();
       const [row, col] = playerMove;
-      const isValidMove = gameBoard.isMoveValid(row, col);
+      const isValidMove = gameBoard.checkPlayerMove(row, col, currentPlayer.marker);
   
       if (isValidMove) {
-        gameBoard.currentBoard[row][col] = currentPlayer.marker;
+        console.log('Valid move. Updating the board.');
+        switchPlayer();
       } else {
         console.log('Invalid move. Try again.');
+        playRound();
       }
   
-      console.log(gameBoard.currentBoard);
+      console.log('Current Board:', gameBoard.getCurrentBoard());
   
-      currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
+      playRound();
     };
   
     return { playRound };
@@ -57,4 +65,4 @@ const gameBoard = (() => {
   // TESTING LOGS
   
   gameController.playRound();
-  
+
