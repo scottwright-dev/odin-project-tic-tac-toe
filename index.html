@@ -9,28 +9,31 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <header>
-        <h1>Tic Tac Toe</h1>
-        <span>Player 1</span>
-        <span>Player 2</span>
+    <header class="container">
+        <h1 class="header__title">Tic Tac Toe</h1>
+        <span class="player__info">Player 1</span>
+        <span class="player__info">Player 2</span>
       </header>
-    <main>
-        <div>
-            <button>0</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
+    <main class="container">
+        <div class="game__board">
+            <button class="board--square" data-index="0">0</button>
+            <button class="board--square" data-index="1">1</button>
+            <button class="board--square" data-index="2">2</button>
+            <button class="board--square" data-index="3">3</button>
+            <button class="board--square" data-index="4">4</button>
+            <button class="board--square" data-index="5">5</button>
+            <button class="board--square" data-index="6">6</button>
+            <button class="board--square" data-index="7">7</button>
+            <button class="board--square" data-index="8">8</button>
         </div>
-        <div>
-            <button>Play Again?</button>
+        <div class="container">
+            <button class="reset__button">Play Again?</button>
           </div>
     </main>
     <footer>
-      <!-- todo: insert github footer-->
+        <a href="https://github.com/scottwright-dev" target="_blank" class="github-icon">
+          <img class="github--img" src="images/github-icon.svg" alt="GitHub icon">
+        </a>
       </footer>
 </body>
 </html>
