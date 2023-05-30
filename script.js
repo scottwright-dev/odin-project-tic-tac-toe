@@ -1,5 +1,6 @@
 // GAME BOARD
 const gameBoard = (() => {
+
     const currentBoard = [
       ['', '', ''],
       ['', '', ''],
@@ -92,10 +93,9 @@ const gameController = (() => {
       }
     };
   
-    return { playRound };
+    return { playRound, switchPlayer, checkForWin, checkForDraw };
   })();
-  
+
   // TESTING LOGS
   
   gameController.playRound();
-
