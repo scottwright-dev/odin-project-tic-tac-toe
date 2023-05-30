@@ -11,6 +11,7 @@
   }
   html, body {
     height: 100%;
+    color: black;
   }
   body {
     line-height: 1.5;
@@ -30,3 +31,17 @@
     isolation: isolate;
   }
 
+/* TEMP BOARD STYLES */
+
+.game__board {
+  display: grid;
+  grid-template-columns: repeat(3, 30px);
+  grid-template-rows: repeat(3, 30px);
+  gap: 2px;
+}
+
+.board--square {
+  border: 2px solid black;
+  height: 30px;
+  width: 30px;
+}
