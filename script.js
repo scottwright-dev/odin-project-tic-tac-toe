@@ -100,6 +100,7 @@ const gameController = (() => {
 const screenController = (() => {
   const boardSquare = document.querySelectorAll('.board--square');
   let currentPlayer = player1;
+  const resetButton = document.querySelector('.reset__button');
 
   const getRowCol = (index) => {
     const row = Math.floor(index / 3);
@@ -140,8 +141,26 @@ const screenController = (() => {
         }
       });
     });
-  };  
+
+    const resetBoard = () => {
+      const board = gameBoard.getCurrentBoard();
+      for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board[i].length; j++) {
+          board[i][j] = '';
+        }
+      }
+      currentPlayer = player1;
+      updateScreen();
+    };
+
+    resetButton.addEventListener('click', () => {
+      resetBoard();
+    });
+  };
+
   return { updateScreen };
 })();
 
 screenController.updateScreen();
+
+
