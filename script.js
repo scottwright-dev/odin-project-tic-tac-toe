@@ -96,17 +96,26 @@ const gameController = (() => {
     return { playRound, switchPlayer, checkForWin, checkForDraw };
   })();
 
-// DISPLAY
+ // DISPLAY
 const screenController = (() => {
   const boardSquare = document.querySelectorAll('.board--square');
   let currentPlayer = player1;
 
   const updateScreen = () => {
-    // Implementation will be added in future commits
+    boardSquare.forEach(square => {
+      const squareElement = square;
+      squareElement.textContent = '';
+    });
+
+    boardSquare.forEach((squareElement, index) => {
+      const button = document.createElement('button');
+      button.classList.add('board--button');
+      button.setAttribute('data-index', index);
+      squareElement.appendChild(button);
+    });
   };
 
   return { updateScreen };
 })();
 
 screenController.updateScreen();
-
