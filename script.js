@@ -96,6 +96,17 @@ const gameController = (() => {
     return { playRound, switchPlayer, checkForWin, checkForDraw };
   })();
 
-  // TESTING LOGS
-  
-  gameController.playRound();
+// DISPLAY
+const screenController = (() => {
+  const boardSquare = document.querySelectorAll('.board--square');
+  let currentPlayer = player1;
+
+  const updateScreen = () => {
+    // Implementation will be added in future commits
+  };
+
+  return { updateScreen };
+})();
+
+screenController.updateScreen();
+
