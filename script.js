@@ -93,11 +93,20 @@ const screenController = (() => {
   const boardSquare = document.querySelectorAll('.board--square');
   let currentPlayer = player1;
   const resetButton = document.querySelector('.reset__button');
+  const gameStatus = document.querySelector('.game__status');
 
   const getRowCol = (index) => {
     const row = Math.floor(index / 3);
     const col = index % 3;
     return [row, col];
+  };
+
+  const showWinMessage = (playerName) => {
+    gameStatus.textContent = `${playerName} wins! 3 in a row!`;
+  };
+
+  const showDrawMessage = () => {
+    gameStatus.textContent = 'Draw game';
   };
 
   const updateScreen = () => {
@@ -123,9 +132,9 @@ const screenController = (() => {
           button.textContent = currentPlayer.marker;
 
           if (gameController.checkForWin(gameBoard.getCurrentBoard(), currentPlayer.marker)) {
-            alert(`${currentPlayer.name} wins! 3 in a row!`);
+            showWinMessage(currentPlayer.name);
           } else if (gameController.checkForDraw(gameBoard.getCurrentBoard())) {
-            alert('Draw game');
+            showDrawMessage();
           }
 
           updateScreen();
@@ -143,6 +152,7 @@ const screenController = (() => {
       }
       currentPlayer = player1;
       updateScreen();
+      gameStatus.textContent = '';
     };
 
     resetButton.addEventListener('click', () => {
@@ -154,5 +164,4 @@ const screenController = (() => {
 })();
 
 screenController.updateScreen();
-
 
