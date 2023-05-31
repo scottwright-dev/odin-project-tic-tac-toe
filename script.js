@@ -119,28 +119,29 @@ const screenController = (() => {
       button.setAttribute('data-index', index);
       squareElement.appendChild(button);
 
-      // Check the marker at the corresponding position in the current board
       const [row, col] = getRowCol(index);
       const marker = gameBoard.getCurrentBoard()[row][col];
-
-      // Update the display with the marker
       button.textContent = marker;
-
 
       button.addEventListener('click', () => {
         const [row, col] = getRowCol(index);
 
         if (gameBoard.checkPlayerMove(row, col, currentPlayer.marker)) {
-          // Update the screen
+          button.textContent = currentPlayer.marker;
+
+          if (gameController.checkForWin(gameBoard.getCurrentBoard(), currentPlayer.marker)) {
+            alert(`${currentPlayer.name} wins! 3 in a row!`);
+          } else if (gameController.checkForDraw(gameBoard.getCurrentBoard())) {
+            alert('Draw game');
+          }
+
           updateScreen();
-        } 
-        currentPlayer = currentPlayer === player1 ? player2 : player1;
+          currentPlayer = currentPlayer === player1 ? player2 : player1;
+        }
       });
     });
-  };
-
+  };  
   return { updateScreen };
 })();
 
 screenController.updateScreen();
-
