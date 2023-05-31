@@ -21,15 +21,7 @@ const gameBoard = (() => {
   })();
   
   // PLAYER
-  const createPlayer = (name, marker) => {
-    const getPlayerMove = () => {
-      const playerMove = prompt(`${name}, enter your move:`);
-      const [row, col] = playerMove.split(',').map(Number);
-      return [row, col];
-    };
-  
-    return { name, marker, getPlayerMove };
-  };
+  const createPlayer = (name, marker) => ({ name, marker });
   
   const player1 = createPlayer('Player 1', 'O');
   const player2 = createPlayer('Player 2', 'X');
