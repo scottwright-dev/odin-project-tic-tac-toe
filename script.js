@@ -96,10 +96,16 @@ const gameController = (() => {
     return { playRound, switchPlayer, checkForWin, checkForDraw };
   })();
 
- // DISPLAY
+// DISPLAY
 const screenController = (() => {
   const boardSquare = document.querySelectorAll('.board--square');
   let currentPlayer = player1;
+
+  const getRowCol = (index) => {
+    const row = Math.floor(index / 3);
+    const col = index % 3;
+    return [row, col];
+  };
 
   const updateScreen = () => {
     boardSquare.forEach(square => {
