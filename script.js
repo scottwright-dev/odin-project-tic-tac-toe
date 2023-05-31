@@ -118,6 +118,23 @@ const screenController = (() => {
       button.classList.add('board--button');
       button.setAttribute('data-index', index);
       squareElement.appendChild(button);
+
+      // Check the marker at the corresponding position in the current board
+      const [row, col] = getRowCol(index);
+      const marker = gameBoard.getCurrentBoard()[row][col];
+
+      // Update the display with the marker
+      button.textContent = marker;
+
+      // Add the event listener
+      button.addEventListener('click', () => {
+        const [row, col] = getRowCol(index);
+
+        if (gameBoard.checkPlayerMove(row, col, currentPlayer.marker)) {
+          // Update the screen
+          updateScreen();
+        } 
+      });
     });
   };
 
@@ -125,3 +142,4 @@ const screenController = (() => {
 })();
 
 screenController.updateScreen();
+
