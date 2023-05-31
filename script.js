@@ -126,7 +126,7 @@ const screenController = (() => {
       // Update the display with the marker
       button.textContent = marker;
 
-      // Add the event listener
+
       button.addEventListener('click', () => {
         const [row, col] = getRowCol(index);
 
@@ -134,6 +134,7 @@ const screenController = (() => {
           // Update the screen
           updateScreen();
         } 
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
       });
     });
   };
