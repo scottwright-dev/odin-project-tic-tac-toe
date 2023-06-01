@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 // GAME BOARD
 const gameBoard = (() => {
 
@@ -97,9 +98,9 @@ const screenController = (() => {
       button.textContent = marker;
 
       button.addEventListener('click', () => {
-        const [row, col] = getRowCol(index);
+        const [clickRow, clickCol] = getRowCol(index);
 
-        if (gameBoard.checkPlayerMove(row, col, currentPlayer.marker)) {
+        if (gameBoard.checkPlayerMove(clickRow, clickCol, currentPlayer.marker)) {
           button.textContent = currentPlayer.marker;
 
           if (gameController.checkForWin(gameBoard.getCurrentBoard(), currentPlayer.marker)) {
