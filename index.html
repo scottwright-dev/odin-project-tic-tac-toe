@@ -14,8 +14,11 @@
 <body>
     <header class="container">
         <h1 class="header__title">Tic Tac Toe</h1>
-        <span class="player__info">Player 1</span>
-        <span class="player__info">Player 2</span>
+        <div class="players">
+          <span class="player__info">Player 1</span>
+          <span class="player__info">Player 2</span>
+        </div>
+        <div class="game__status"></div>
       </header>
     <main class="container">
         <div class="game__board">
@@ -35,7 +38,6 @@
               <span class="front">Play Again</span>
             </button>
           </div>
-          <div class="game__status"></div>
     </main>
     <footer>
         <a href="https://github.com/scottwright-dev" target="_blank" class="github-icon">
