@@ -74,11 +74,11 @@ const screenController = (() => {
   };
 
   const showWinMessage = (playerName) => {
-    gameStatus.textContent = `${playerName} wins! 3 in a row!`;
+    gameStatus.textContent = `${playerName} wins!`;
   };
 
   const showDrawMessage = () => {
-    gameStatus.textContent = 'Draw game';
+    gameStatus.textContent = 'It\'s a draw!';
   };
 
   const updateScreen = () => {
