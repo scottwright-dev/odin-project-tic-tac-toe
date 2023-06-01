@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-plusplus */
 // GAME BOARD
 const gameBoard = (() => {
 
