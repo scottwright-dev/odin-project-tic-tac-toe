@@ -56,36 +56,7 @@ const gameController = (() => {
   
     const checkForDraw = board => board.every(row => row.every(square => square !== ''));
   
-    const playRound = () => {
-      const board = gameBoard.getCurrentBoard();
-  
-      while (true) {
-        const playerMove = currentPlayer.getPlayerMove();
-        const [row, col] = playerMove;
-        const isValidMove = gameBoard.checkPlayerMove(row, col, currentPlayer.marker);
-  
-        if (isValidMove) {
-          console.log('Valid move. Updating the board.');
-          console.log('Current Board:', gameBoard.getCurrentBoard());
-  
-          if (checkForWin(board, currentPlayer.marker)) {
-            console.log(`${currentPlayer.name} wins! 3 in a row!`);
-            break;
-          }
-  
-          if (checkForDraw(board)) {
-            console.log('Draw game');
-            break;
-          }
-  
-          switchPlayer();
-        } else {
-          console.log('Invalid move. Try again.');
-        }
-      }
-    };
-  
-    return { playRound, switchPlayer, checkForWin, checkForDraw };
+    return { switchPlayer, checkForWin, checkForDraw };
   })();
 
 // DISPLAY
@@ -145,6 +116,7 @@ const screenController = (() => {
 
     const resetBoard = () => {
       const board = gameBoard.getCurrentBoard();
+
       for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
           board[i][j] = '';
