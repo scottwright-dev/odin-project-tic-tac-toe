@@ -63,6 +63,7 @@ const gameController = (() => {
 // DISPLAY
 const screenController = (() => {
   const boardSquare = document.querySelectorAll('.board--square');
+  const playerInfo = document.querySelectorAll('.player__info');
   let currentPlayer = player1;
   const resetButton = document.querySelector('.reset__button');
   const gameStatus = document.querySelector('.game__status');
@@ -85,6 +86,13 @@ const screenController = (() => {
   };
 
   const updateScreen = () => {
+    playerInfo.forEach(info => {
+      info.classList.remove('underline');
+    });
+
+    const currentPlayerInfo = currentPlayer === player1 ? playerInfo[0] : playerInfo[1];
+    currentPlayerInfo.classList.add('underline');
+
     boardSquare.forEach(square => {
       const squareElement = square;
       squareElement.textContent = '';
@@ -111,10 +119,10 @@ const screenController = (() => {
               showWinMessage(currentPlayer.name);
             } else if (gameController.checkForDraw(gameBoard.getCurrentBoard())) {
               showDrawMessage();
+            } else {
+              currentPlayer = currentPlayer === player1 ? player2 : player1;
+              updateScreen();
             }
-          
-            updateScreen();
-            currentPlayer = currentPlayer === player1 ? player2 : player1;
           }
         }
       });
@@ -143,5 +151,3 @@ const screenController = (() => {
 })();
 
 screenController.updateScreen();
-
-
