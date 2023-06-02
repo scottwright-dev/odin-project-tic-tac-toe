@@ -42,9 +42,9 @@
     --line-height: 1.5;
     --padding: 1rem;
     --primary: #fcfaf7;
-    --secondary: #738cac;
     --spacing: 1rem;
     --text-color: #ffbf26;
+    --text-shadow: 2px 3px 5px hsl(0deg 0% 0% / 0.25);
   }
 
   /* ELEMENT STYLES */
@@ -93,6 +93,13 @@
 
 .player__info {
   margin: 0 2rem;
+  text-shadow: var(--text-shadow);
+}
+
+.player__info.underline {
+  text-decoration: underline;
+  font-weight: bold;
+  color: var(--text-color);
 }
 
 .player__info,
@@ -109,6 +116,7 @@
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+  text-shadow: var(--text-shadow);
   width: 100%;
   top: 105%;
 }
@@ -163,7 +171,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   background: hsl(0deg 0% 0% / 0.25);
   will-change: transform;
   transform: translateY(2px);
@@ -178,7 +186,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   background: linear-gradient(
     to left,
     hsl(45, 100%, 16%) 0%,
