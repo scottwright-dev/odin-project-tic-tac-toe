@@ -24,8 +24,8 @@ const gameBoard = (() => {
   // PLAYER
   const createPlayer = (name, marker) => ({ name, marker });
   
-  const player1 = createPlayer('Player 1', 'O');
-  const player2 = createPlayer('Player 2', 'X');
+  const player1 = createPlayer('Player O', 'O');
+  const player2 = createPlayer('Player X', 'X');
   
 // GAME CONTROLLER
 const gameController = (() => {
