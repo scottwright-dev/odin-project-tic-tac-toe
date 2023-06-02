@@ -66,6 +66,7 @@ const screenController = (() => {
   let currentPlayer = player1;
   const resetButton = document.querySelector('.reset__button');
   const gameStatus = document.querySelector('.game__status');
+  let isGameOver = false;
 
   const getRowCol = (index) => {
     const row = Math.floor(index / 3);
@@ -75,10 +76,12 @@ const screenController = (() => {
 
   const showWinMessage = (playerName) => {
     gameStatus.textContent = `${playerName} wins!`;
+    isGameOver = true;
   };
 
   const showDrawMessage = () => {
     gameStatus.textContent = 'It\'s a draw!';
+    isGameOver = true; 
   };
 
   const updateScreen = () => {
@@ -98,19 +101,21 @@ const screenController = (() => {
       button.textContent = marker;
 
       button.addEventListener('click', () => {
-        const [clickRow, clickCol] = getRowCol(index);
+        if (!isGameOver) {
+          const [clickRow, clickCol] = getRowCol(index);
 
-        if (gameBoard.checkPlayerMove(clickRow, clickCol, currentPlayer.marker)) {
-          button.textContent = currentPlayer.marker;
+          if (gameBoard.checkPlayerMove(clickRow, clickCol, currentPlayer.marker)) {
+            button.textContent = currentPlayer.marker;
 
-          if (gameController.checkForWin(gameBoard.getCurrentBoard(), currentPlayer.marker)) {
-            showWinMessage(currentPlayer.name);
-          } else if (gameController.checkForDraw(gameBoard.getCurrentBoard())) {
-            showDrawMessage();
+            if (gameController.checkForWin(gameBoard.getCurrentBoard(), currentPlayer.marker)) {
+              showWinMessage(currentPlayer.name);
+            } else if (gameController.checkForDraw(gameBoard.getCurrentBoard())) {
+              showDrawMessage();
+            }
+          
+            updateScreen();
+            currentPlayer = currentPlayer === player1 ? player2 : player1;
           }
-
-          updateScreen();
-          currentPlayer = currentPlayer === player1 ? player2 : player1;
         }
       });
     });
@@ -124,6 +129,7 @@ const screenController = (() => {
         }
       }
       currentPlayer = player1;
+      isGameOver = false;
       updateScreen();
       gameStatus.textContent = '';
     };
@@ -137,4 +143,5 @@ const screenController = (() => {
 })();
 
 screenController.updateScreen();
+
 
